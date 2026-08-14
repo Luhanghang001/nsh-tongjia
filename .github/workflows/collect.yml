@@ -1,0 +1,37 @@
+name: 采集铜价数据
+
+on:
+  schedule:
+    - cron: '5 * * * *' # 每小时第5分钟跑一次
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 安装依赖
+        run: npm install
+
+      - name: 安装 Playwright 浏览器
+        run: npx playwright install --with-deps chromium
+
+      - name: 采集数据
+        run: npm run collect
+
+      - name: 提交数据变更
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/tongjia.csv
+          git diff --cached --quiet && echo "无变化, 跳过提交" || git commit -m "更新铜价数据 $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push

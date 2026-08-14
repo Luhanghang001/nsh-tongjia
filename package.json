@@ -1,0 +1,13 @@
+{
+  "name": "nsh-tongjia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "逆水寒黄金畅玩服各服铜价逐时数据采集",
+  "type": "commonjs",
+  "scripts": {
+    "collect": "node scripts/collect.js"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
