@@ -46,7 +46,7 @@ function saveAll(map) {
   fs.writeFileSync(CSV_PATH, CSV_HEADER + body + (body ? '\n' : ''));
 }
 
-async function captureForCurrentSelection(page, specId, timeoutMs = 15000) {
+async function captureForCurrentSelection(page, specId, timeoutMs = 45000) {
   const resp = await page.waitForResponse(
     (r) => {
       if (!r.url().includes('/c2c-web/v1/common/get-price-line')) return false;
@@ -69,9 +69,23 @@ async function selectServer(page, serverName) {
   await page.locator('.n-cascader-option__label', { hasText: serverName }).first().click();
 }
 
+async function saveDebug(page, tag) {
+  try {
+    const dir = path.join(__dirname, '..', 'debug');
+    fs.mkdirSync(dir, { recursive: true });
+    await page.screenshot({ path: path.join(dir, `${tag}.png`), fullPage: true });
+    fs.writeFileSync(path.join(dir, `${tag}.html`), await page.content());
+    console.error(`[DEBUG] 已保存 debug/${tag}.png 和 debug/${tag}.html`);
+  } catch (e) {
+    console.error(`[DEBUG] 保存调试信息失败: ${e.message}`);
+  }
+}
+
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' });
+  page.on('console', (msg) => console.log(`[浏览器控制台] ${msg.type()}: ${msg.text()}`));
+  page.on('requestfailed', (req) => console.log(`[请求失败] ${req.url()} ${req.failure()?.errorText}`));
 
   const fetchedAt = new Date().toISOString();
   const existing = loadExisting();
@@ -79,15 +93,20 @@ async function selectServer(page, serverName) {
   let fail = 0;
 
   try {
+    page.goto(PAGE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 }).catch((e) => console.error(`[goto失败] ${e.message}`));
+
     // 首次加载页面时默认选中第一个服务器(三清山), 会自动触发一次 get-price-line
     const firstServer = SERVERS[0];
-    const [prices] = await Promise.all([
-      captureForCurrentSelection(page, firstServer.specId),
-      page.goto(PAGE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 }),
-    ]);
-    mergePrices(existing, firstServer, prices, fetchedAt);
-    ok++;
-    console.log(`[OK] ${firstServer.name} (默认选中) 采集到 ${prices.length} 条`);
+    try {
+      const prices = await captureForCurrentSelection(page, firstServer.specId);
+      mergePrices(existing, firstServer, prices, fetchedAt);
+      ok++;
+      console.log(`[OK] ${firstServer.name} (默认选中) 采集到 ${prices.length} 条`);
+    } catch (e) {
+      fail++;
+      console.error(`[FAIL] ${firstServer.name}: ${e.message}`);
+      await saveDebug(page, 'first-load-failed');
+    }
 
     for (const server of SERVERS.slice(1)) {
       try {
