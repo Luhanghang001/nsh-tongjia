@@ -17,6 +17,8 @@ const SERVERS = [
   { name: '水帘洞', specId: '3211946' },
   { name: '白帝城', specId: '324999' },
   { name: '花果山', specId: '3146578' },
+  { name: '女儿国', specId: '3712269' },
+  { name: '昆仑虚', specId: '3865477' }, // 千岛下拉项显示为「昆仑虚（9.25开启）」，按包含匹配可选中
 ];
 
 const CSV_PATH = path.join(__dirname, '..', 'data', 'tongjia.csv');
