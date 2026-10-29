@@ -6,8 +6,8 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 
-const PAGE_URL =
-  'https://qiandao.com/currency/currency-zone?catalogName=%E9%80%86%E6%B0%B4%E5%AF%92%E4%B8%93%E5%8C%BA&tagIds=[1883484]&attributeId=904221228984762040&entryId=1883484&entryType=TAG';
+// 2026-10-27 千岛改版，旧的 catalogName/tagIds 入口不再显示区服，改用 islandId 入口
+const PAGE_URL = 'https://qiandao.com/currency/currency-zone?islandId=300692';
 
 // 服务器名 -> specId 映射 (来自 get-cascade-attribute 接口)
 const SERVERS = [
