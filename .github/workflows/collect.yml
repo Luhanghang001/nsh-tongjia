@@ -1,6 +1,12 @@
 name: 采集铜价数据
 
 on:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'test/**'
+      - 'package*.json'
+      - '.github/workflows/collect.yml'
   schedule:
     - cron: '5 * * * *' # 每小时第5分钟跑一次
   workflow_dispatch: {}
