@@ -79,6 +79,7 @@ async function captureForCurrentSelection(page, responses, specId, timeoutMs = W
         continue;
       }
       if (!INTERACTIVE) {
+        await saveDebug(page, 'verification-failed');
         const error = new Error(VERIFY_MESSAGE);
         error.code = 'HUMAN_VERIFICATION_REQUIRED';
         throw error;
@@ -110,7 +111,11 @@ async function slideVerification(page) {
   await page.mouse.move(x, y);
   await page.mouse.down();
   try {
-    await page.mouse.move(rail.x + rail.width - handle.width / 2, y, { steps: 30 });
+    const end = rail.x + rail.width - handle.width / 2;
+    for (let step = 1; step <= 30; step++) {
+      await page.mouse.move(x + (end - x) * step / 30, y);
+      await page.waitForTimeout(30);
+    }
   } finally {
     await page.mouse.up();
   }
@@ -160,13 +165,18 @@ async function main() {
   // 持久会话只留在本机。人工验证结果不上传到 GitHub。
   const profile = PROFILE || (INTERACTIVE ? path.join(__dirname, '..', '.browser-profile') : null);
   const browser = profile
-    ? await chromium.launchPersistentContext(profile, { headless: !HEADED, channel: 'chromium', locale: 'zh-CN' })
+    ? await chromium.launchPersistentContext(profile, { headless: !HEADED, channel: 'chromium', locale: 'zh-CN', args: process.platform === 'win32' && !INTERACTIVE ? ['--start-minimized'] : [] })
     : await chromium.launch({ headless: !HEADED, channel: 'chromium' });
   const page = profile ? await browser.newPage() : await browser.newPage({ locale: 'zh-CN' });
   page.setDefaultTimeout(WAIT_MS);
   page.on('requestfailed', req => {
     const url = new URL(req.url());
     if (url.pathname.includes('/c2c-web/')) console.error(`[请求失败] ${url.pathname} ${req.failure()?.errorText}`);
+  });
+  page.on('response', async resp => {
+    const url = new URL(resp.url());
+    if (!url.pathname.includes('/c2c-web/')) return;
+    if (resp.status() >= 400) console.error(`[接口错误] HTTP ${resp.status()} ${url.pathname}`);
   });
   const responses = observePrices(page);
 
@@ -196,16 +206,20 @@ async function main() {
       results.push({ server: firstServer.name, status: e.code === 'NO_DATA' ? 'no_data' : 'failed', error: e.message });
       console.error(`[FAIL] ${firstServer.name}: ${e.message}`);
       await saveDebug(page, 'first-load-failed');
-      if (e.code === 'HUMAN_VERIFICATION_REQUIRED') throw e;
+      // 默认区服初始化失败时，整个区服列表可能尚未加载，停止本轮。
+      if (e.code !== 'NO_DATA') throw e;
     }
 
     for (const server of SERVERS.slice(1)) {
       try {
         await page.waitForTimeout(1000);
-        const [prices2] = await Promise.all([
+        const [priceResult, selectionResult] = await Promise.allSettled([
           captureForCurrentSelection(page, responses, server.specId),
           selectServer(page, server.name),
         ]);
+        if (priceResult.status === 'rejected') throw priceResult.reason;
+        if (selectionResult.status === 'rejected') throw selectionResult.reason;
+        const prices2 = priceResult.value;
         mergePrices(existing, server, prices2, fetchedAt);
         ok++;
         results.push({ server: server.name, status: 'ok', count: prices2.length, latestBucket: prices2.at(-1).bucketStr });
