@@ -1,28 +1,25 @@
 {
-  "fetchedAt": "2026-11-01T04:59:12.701Z",
+  "fetchedAt": "2026-11-01T05:03:48.777Z",
   "ok": 0,
-  "failed": 4,
+  "failed": 1,
   "noData": 0,
   "servers": [
     {
       "server": "三清山",
       "status": "failed",
-      "error": "等待服务器 324996 的有效价格响应超时"
+      "error": "千岛要求人工访问验证。请运行 npm run collect:interactive，在打开的浏览器中手动完成验证。"
     },
     {
       "server": "云樱岛",
-      "status": "failed",
-      "error": "locator.click: Timeout 45000ms exceeded.\nCall log:\n  - waiting for locator('.n-cascader-option__label').filter({ hasText: '云樱岛' }).first()\n"
+      "status": "not_collected"
     },
     {
       "server": "桃花坞",
-      "status": "failed",
-      "error": "locator.click: Timeout 45000ms exceeded.\nCall log:\n  - waiting for locator('.n-cascader-option__label').filter({ hasText: '桃花坞' }).first()\n"
+      "status": "not_collected"
     },
     {
       "server": "水帘洞",
-      "status": "failed",
-      "error": "千岛要求人工访问验证。请运行 npm run collect:interactive，在打开的浏览器中手动完成验证。"
+      "status": "not_collected"
     },
     {
       "server": "白帝城",
