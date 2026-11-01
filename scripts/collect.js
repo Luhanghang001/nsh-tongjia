@@ -160,10 +160,14 @@ async function main() {
   // 持久会话只留在本机。人工验证结果不上传到 GitHub。
   const profile = PROFILE || (INTERACTIVE ? path.join(__dirname, '..', '.browser-profile') : null);
   const browser = profile
-    ? await chromium.launchPersistentContext(profile, { headless: !HEADED, channel: 'chromium' })
+    ? await chromium.launchPersistentContext(profile, { headless: !HEADED, channel: 'chromium', locale: 'zh-CN' })
     : await chromium.launch({ headless: !HEADED, channel: 'chromium' });
-  const page = await browser.newPage();
+  const page = profile ? await browser.newPage() : await browser.newPage({ locale: 'zh-CN' });
   page.setDefaultTimeout(WAIT_MS);
+  page.on('requestfailed', req => {
+    const url = new URL(req.url());
+    if (url.pathname.includes('/c2c-web/')) console.error(`[请求失败] ${url.pathname} ${req.failure()?.errorText}`);
+  });
   const responses = observePrices(page);
 
   const fetchedAt = new Date().toISOString();
@@ -197,6 +201,7 @@ async function main() {
 
     for (const server of SERVERS.slice(1)) {
       try {
+        await page.waitForTimeout(1000);
         const [prices2] = await Promise.all([
           captureForCurrentSelection(page, responses, server.specId),
           selectServer(page, server.name),
