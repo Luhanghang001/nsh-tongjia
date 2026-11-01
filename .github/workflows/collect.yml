@@ -2,6 +2,7 @@ name: 采集铜价数据
 
 on:
   push:
+    branches: [main]
     paths:
       - 'scripts/**'
       - 'test/**'
@@ -52,6 +53,10 @@ jobs:
       - name: 提交数据变更
         if: ${{ !cancelled() }}
         run: |
+          if git diff --quiet -- data/tongjia.csv; then
+            echo "本轮没有有效价格变更，保留上次发布的数据和状态"
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/tongjia.csv
