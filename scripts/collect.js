@@ -5,6 +5,12 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
+const INTERACTIVE = process.argv.includes('--interactive');
+const HEADED = INTERACTIVE || process.argv.includes('--headed');
+const PROFILE = process.env.TONGJIA_PROFILE;
+const WAIT_MS = INTERACTIVE ? 10 * 60 * 1000 : 45000;
+const VERIFY_MESSAGE = '千岛要求人工访问验证。请运行 npm run collect:interactive，在打开的浏览器中手动完成验证。';
+const attemptedVerification = new WeakSet();
 
 // 2026-10-27 千岛改版，旧的 catalogName/tagIds 入口不再显示区服，改用 islandId 入口
 const PAGE_URL = 'https://qiandao.com/currency/currency-zone?islandId=300692';
@@ -39,7 +45,7 @@ function loadExisting() {
 function saveAll(map) {
   fs.mkdirSync(path.dirname(CSV_PATH), { recursive: true });
   const rows = Array.from(map.values()).sort((a, b) => {
-    if (a.server !== b.server) return a.server.localeCompare(b.server);
+    if (a.server !== b.server) return a.server.localeCompare(b.server, 'en');
     return Number(a.bucketTimestamp) - Number(b.bucketTimestamp);
   });
   const body = rows
@@ -48,22 +54,89 @@ function saveAll(map) {
   fs.writeFileSync(CSV_PATH, CSV_HEADER + body + (body ? '\n' : ''));
 }
 
-async function captureForCurrentSelection(page, specId, timeoutMs = 45000) {
-  const resp = await page.waitForResponse(
-    (r) => {
-      if (!r.url().includes('/c2c-web/v1/common/get-price-line')) return false;
-      try {
-        const body = JSON.parse(r.request().postData() || '{}');
-        return Array.isArray(body.specIds) && body.specIds[0] === specId;
-      } catch (e) {
-        return false;
+function observePrices(page) {
+  const responses = new Map();
+  page.on('response', async (resp) => {
+    if (!resp.url().includes('/c2c-web/v1/common/get-price-line')) return;
+    try {
+      const body = JSON.parse(resp.request().postData() || '{}');
+      const json = await resp.json();
+      if (Array.isArray(body.specIds)) responses.set(String(body.specIds[0]), json);
+    } catch (_) { /* 验证页不是价格 JSON，交给访问验证检测处理。 */ }
+  });
+  return responses;
+}
+
+async function captureForCurrentSelection(page, responses, specId, timeoutMs = WAIT_MS) {
+  const deadline = Date.now() + timeoutMs;
+  let announced = false;
+  while (Date.now() < deadline) {
+    if (await page.locator('#waf_nc_block').isVisible()) {
+      if (!attemptedVerification.has(page)) {
+        attemptedVerification.add(page);
+        console.log('[验证] 尝试拖动页面滑块一次。');
+        await slideVerification(page);
+        continue;
       }
-    },
-    { timeout: timeoutMs }
-  );
-  const json = await resp.json();
-  if (json.code !== '0') throw new Error(`get-price-line 返回错误: ${json.message}`);
-  return json.data.prices || [];
+      if (!INTERACTIVE) {
+        const error = new Error(VERIFY_MESSAGE);
+        error.code = 'HUMAN_VERIFICATION_REQUIRED';
+        throw error;
+      }
+      if (!announced) {
+        console.error('[需要人工验证] 请在浏览器中完成滑块；程序最多等待 10 分钟。');
+        announced = true;
+      }
+    } else if (responses.has(specId)) {
+      const json = responses.get(specId);
+      responses.delete(specId);
+      if (String(json.code) !== '0') throw new Error(`get-price-line 返回错误: ${json.message}`);
+      validatePrices(json.data?.prices);
+      return json.data.prices;
+    }
+    await page.waitForTimeout(250);
+  }
+  throw new Error(`等待服务器 ${specId} 的有效价格响应超时`);
+}
+
+async function slideVerification(page) {
+  const slider = page.locator('#aliyunCaptcha-sliding-slider');
+  const track = page.locator('#aliyunCaptcha-sliding-body');
+  const handle = await slider.boundingBox();
+  const rail = await track.boundingBox();
+  if (!handle || !rail) return;
+  const x = handle.x + handle.width / 2;
+  const y = handle.y + handle.height / 2;
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  try {
+    await page.mouse.move(rail.x + rail.width - handle.width / 2, y, { steps: 30 });
+  } finally {
+    await page.mouse.up();
+  }
+  await page.locator('#waf_nc_block').waitFor({ state: 'hidden', timeout: 10000 }).catch(() => {});
+}
+
+function validatePrices(prices) {
+  if (Array.isArray(prices) && prices.length === 0) {
+    const error = new Error('接口返回空价格列表；保留历史数据，不标记为采集成功');
+    error.code = 'NO_DATA';
+    throw error;
+  }
+  if (!Array.isArray(prices)) throw new Error('价格响应缺少 prices 数组');
+  for (const p of prices) {
+    if (!/^\d{4}-\d{2}-\d{2} \d{2}$/.test(p.bucketStr)
+      || !Number.isFinite(Number(p.bucketTimestamp)) || Number(p.bucketTimestamp) <= 0
+      || p.rmbPerAmount === null || p.rmbPerAmount === undefined || p.rmbPerAmount === ''
+      || !Number.isFinite(Number(p.rmbPerAmount)) || Number(p.rmbPerAmount) < 0
+      || p.tradingVolume === null || p.tradingVolume === undefined || p.tradingVolume === ''
+      || !Number.isFinite(Number(p.tradingVolume)) || Number(p.tradingVolume) < 0) {
+      throw new Error('价格响应字段异常，拒绝写入 CSV');
+    }
+  }
+  if (Date.now() - Math.max(...prices.map(p => Number(p.bucketTimestamp))) > 6 * 3600000) {
+    throw new Error('接口最新价格已超过 6 小时，拒绝标记为采集成功');
+  }
 }
 
 async function selectServer(page, serverName) {
@@ -83,58 +156,86 @@ async function saveDebug(page, tag) {
   }
 }
 
-(async () => {
-  const browser = await chromium.launch();
-  const page = await browser.newPage({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36' });
-  page.on('console', (msg) => console.log(`[浏览器控制台] ${msg.type()}: ${msg.text()}`));
-  page.on('requestfailed', (req) => console.log(`[请求失败] ${req.url()} ${req.failure()?.errorText}`));
+async function main() {
+  // 持久会话只留在本机。人工验证结果不上传到 GitHub。
+  const profile = PROFILE || (INTERACTIVE ? path.join(__dirname, '..', '.browser-profile') : null);
+  const browser = profile
+    ? await chromium.launchPersistentContext(profile, { headless: !HEADED, channel: 'chromium' })
+    : await chromium.launch({ headless: !HEADED, channel: 'chromium' });
+  const page = await browser.newPage();
+  page.setDefaultTimeout(WAIT_MS);
+  const responses = observePrices(page);
 
   const fetchedAt = new Date().toISOString();
   const existing = loadExisting();
   let ok = 0;
   let fail = 0;
+  let noData = 0;
+  const results = [];
 
   try {
-    page.goto(PAGE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 }).catch((e) => console.error(`[goto失败] ${e.message}`));
+    const navigation = await page.goto(PAGE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    if (navigation && navigation.status() >= 400) {
+      throw new Error(`页面返回 HTTP ${navigation.status()}，停止本轮采集，不连续重试`);
+    }
 
     // 首次加载页面时默认选中第一个服务器(三清山), 会自动触发一次 get-price-line
     const firstServer = SERVERS[0];
     try {
-      const prices = await captureForCurrentSelection(page, firstServer.specId);
+      const prices = await captureForCurrentSelection(page, responses, firstServer.specId);
       mergePrices(existing, firstServer, prices, fetchedAt);
       ok++;
+      results.push({ server: firstServer.name, status: 'ok', count: prices.length, latestBucket: prices.at(-1).bucketStr });
       console.log(`[OK] ${firstServer.name} (默认选中) 采集到 ${prices.length} 条`);
     } catch (e) {
-      fail++;
+      if (e.code === 'NO_DATA') noData++; else fail++;
+      results.push({ server: firstServer.name, status: e.code === 'NO_DATA' ? 'no_data' : 'failed', error: e.message });
       console.error(`[FAIL] ${firstServer.name}: ${e.message}`);
       await saveDebug(page, 'first-load-failed');
+      if (e.code === 'HUMAN_VERIFICATION_REQUIRED') throw e;
     }
 
     for (const server of SERVERS.slice(1)) {
       try {
         const [prices2] = await Promise.all([
-          captureForCurrentSelection(page, server.specId),
+          captureForCurrentSelection(page, responses, server.specId),
           selectServer(page, server.name),
         ]);
         mergePrices(existing, server, prices2, fetchedAt);
         ok++;
+        results.push({ server: server.name, status: 'ok', count: prices2.length, latestBucket: prices2.at(-1).bucketStr });
         console.log(`[OK] ${server.name} 采集到 ${prices2.length} 条`);
       } catch (e) {
-        fail++;
-        console.error(`[FAIL] ${server.name}: ${e.message}`);
+        if (e.code === 'NO_DATA') noData++; else fail++;
+        results.push({ server: server.name, status: e.code === 'NO_DATA' ? 'no_data' : 'failed', error: e.message });
+        console.error(`[${e.code === 'NO_DATA' ? 'NO DATA' : 'FAIL'}] ${server.name}: ${e.message}`);
+        if (process.env.GITHUB_ACTIONS && e.code === 'NO_DATA') console.log(`::warning::${server.name} 本轮没有价格数据，历史价格不代表现价`);
+        if (e.code === 'HUMAN_VERIFICATION_REQUIRED') throw e;
       }
     }
   } finally {
     await browser.close();
+    // 包括中途失败：已验证的数据仍保存，并记录未采集的服，避免假成功。
+    if (ok > 0) saveAll(existing);
+    fs.mkdirSync(path.dirname(CSV_PATH), { recursive: true });
+    fs.writeFileSync(path.join(path.dirname(CSV_PATH), 'status.json'), JSON.stringify({
+      fetchedAt, ok, failed: fail, noData,
+      servers: SERVERS.map(server => results.find(r => r.server === server.name) || { server: server.name, status: 'not_collected' }),
+    }, null, 2) + '\n');
   }
 
-  saveAll(existing);
-  console.log(`完成. 成功 ${ok} 个服务器, 失败 ${fail} 个. 数据已写入 ${CSV_PATH}`);
+  console.log(`完成. 成功 ${ok} 个服务器, 失败 ${fail} 个, 无数据 ${noData} 个.${ok > 0 ? ` 数据已写入 ${CSV_PATH}` : ' 未修改历史数据。'}`);
 
-  if (fail === SERVERS.length) {
-    process.exitCode = 1; // 全部失败才算任务失败, 部分失败不影响其它数据落地
+  if (fail > 0 || ok === 0) {
+    process.exitCode = 1; // 任一服缺数都需要报告失败，成功的服仍落地。
   }
-})();
+}
+
+if (require.main === module) main().catch(error => {
+  console.error(`[ERROR] ${error.message}`);
+  process.exitCode = error.code === 'HUMAN_VERIFICATION_REQUIRED' ? 2 : 1;
+});
+module.exports = { validatePrices, captureForCurrentSelection, slideVerification };
 
 function mergePrices(map, server, prices, fetchedAt) {
   for (const p of prices) {

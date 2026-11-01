@@ -39,6 +39,12 @@
 
 `.github/workflows/collect.yml`，每小时第5分钟跑一次，也可以在 Actions 页面手动 `workflow_dispatch` 触发。
 
+GitHub 的定时触发可能延迟，并非每小时准时启动。云端使用虚拟显示器运行完整 Chromium。遇到千岛滑块时，通过页面鼠标操作尝试一次；验证失败或 HTTP 限流后停止，不循环重试。此方式不能保证平台以后一直接受自动采集。
+
+`data/status.json` 记录每个服务器本轮的状态。`ok` 才表示取回有效价格；`no_data` 表示接口成功但价格列表为空；`failed`/`not_collected` 表示本轮未取回数据。空列表不会写成零价，历史 CSV 也不会被伪装成已更新。最新价格超过 6 小时则报错。
+
+2026-11-01 实测：7 个服务器有价格；白帝城接口返回空价格列表，历史数据保留。
+
 ## 本地手动跑一次
 
 ```bash
@@ -46,3 +52,9 @@ npm install
 npx playwright install --with-deps chromium
 npm run collect
 ```
+
+本机需要显示浏览器时：`node scripts/collect.js --headed`。需要人工介入时：`npm run collect:interactive`，最多等待 10 分钟。
+
+可设置 `TONGJIA_PROFILE` 为本机专用会话目录。会话包含站点数据，只保留在本机，禁止上传到仓库。默认交互模式使用已忽略的 `.browser-profile/`。
+
+运行 `npm test` 验证空数据、过期数据及验证失败处理。

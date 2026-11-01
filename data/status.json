@@ -1,0 +1,55 @@
+{
+  "fetchedAt": "2026-11-01T04:53:44.316Z",
+  "ok": 7,
+  "failed": 0,
+  "noData": 1,
+  "servers": [
+    {
+      "server": "三清山",
+      "status": "ok",
+      "count": 24,
+      "latestBucket": "2026-11-01 11"
+    },
+    {
+      "server": "云樱岛",
+      "status": "ok",
+      "count": 24,
+      "latestBucket": "2026-11-01 11"
+    },
+    {
+      "server": "桃花坞",
+      "status": "ok",
+      "count": 24,
+      "latestBucket": "2026-11-01 11"
+    },
+    {
+      "server": "水帘洞",
+      "status": "ok",
+      "count": 24,
+      "latestBucket": "2026-11-01 11"
+    },
+    {
+      "server": "白帝城",
+      "status": "no_data",
+      "error": "接口返回空价格列表；保留历史数据，不标记为采集成功"
+    },
+    {
+      "server": "花果山",
+      "status": "ok",
+      "count": 24,
+      "latestBucket": "2026-11-01 11"
+    },
+    {
+      "server": "女儿国",
+      "status": "ok",
+      "count": 24,
+      "latestBucket": "2026-11-01 11"
+    },
+    {
+      "server": "昆仑虚",
+      "status": "ok",
+      "count": 24,
+      "latestBucket": "2026-11-01 11"
+    }
+  ]
+}
