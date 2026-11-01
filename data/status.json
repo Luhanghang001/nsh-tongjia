@@ -1,55 +1,44 @@
 {
-  "fetchedAt": "2026-11-01T04:53:44.316Z",
-  "ok": 7,
-  "failed": 0,
-  "noData": 1,
+  "fetchedAt": "2026-11-01T04:54:57.294Z",
+  "ok": 0,
+  "failed": 4,
+  "noData": 0,
   "servers": [
     {
       "server": "三清山",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-01 11"
+      "status": "failed",
+      "error": "等待服务器 324996 的有效价格响应超时"
     },
     {
       "server": "云樱岛",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-01 11"
+      "status": "failed",
+      "error": "locator.click: Timeout 45000ms exceeded.\nCall log:\n  - waiting for locator('.n-cascader-option__label').filter({ hasText: '云樱岛' }).first()\n"
     },
     {
       "server": "桃花坞",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-01 11"
+      "status": "failed",
+      "error": "locator.click: Timeout 45000ms exceeded.\nCall log:\n  - waiting for locator('.n-cascader-option__label').filter({ hasText: '桃花坞' }).first()\n"
     },
     {
       "server": "水帘洞",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-01 11"
+      "status": "failed",
+      "error": "千岛要求人工访问验证。请运行 npm run collect:interactive，在打开的浏览器中手动完成验证。"
     },
     {
       "server": "白帝城",
-      "status": "no_data",
-      "error": "接口返回空价格列表；保留历史数据，不标记为采集成功"
+      "status": "not_collected"
     },
     {
       "server": "花果山",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-01 11"
+      "status": "not_collected"
     },
     {
       "server": "女儿国",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-01 11"
+      "status": "not_collected"
     },
     {
       "server": "昆仑虚",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-01 11"
+      "status": "not_collected"
     }
   ]
 }
