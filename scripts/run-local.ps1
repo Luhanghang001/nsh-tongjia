@@ -16,9 +16,10 @@ try {
     if ($dirty) { throw '仓库有未提交改动，停止以保护现有文件。' }
     & git pull --ff-only origin main
     if ($LASTEXITCODE -ne 0) { throw '同步 main 失败，未运行采集。' }
-    $env:TONGJIA_PROFILE = Join-Path $repoRoot '.browser-profile'
-    & node (Join-Path $PSScriptRoot 'collect.js') --headed
-    $taskExit = $LASTEXITCODE
+    . (Join-Path $PSScriptRoot 'isolated-desktop.ps1')
+    $workerLog = Join-Path $logDir ((Get-Date -Format 'yyyyMMdd-HHmmss') + '-collector.log')
+    $taskExit = Invoke-TongjiaIsolatedDesktop -LogPath $workerLog
+    if (Test-Path -LiteralPath $workerLog) { Get-Content -LiteralPath $workerLog | Write-Output }
     & git add -- data/tongjia.csv data/status.json
     if ($LASTEXITCODE -ne 0) { throw '暂存采集结果失败。' }
     & git diff --cached --quiet

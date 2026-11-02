@@ -63,4 +63,8 @@ npm run collect
 
 `scripts/run-local.ps1` 从 `main` 同步程序，使用本机专用会话运行完整浏览器，再将结果提交到 GitHub。Windows 定时任务 `NSH_TongjiaPriceFetch` 调用此脚本；电脑必须开机且用户已登录。运行日志位于已忽略的 `logs/`。脚本遇到本地未提交改动或 Git 同步错误时停止，保留数据，不强制覆盖。
 
+2026-11-02 起，本机任务将采集器放在独立的 Win32 后台桌面中运行，不切换用户桌面，浏览器不出现在当前桌面或任务栏。完整浏览器模式和千岛采集逻辑保持不变，未改用 headless。
+`scripts/isolated-desktop.ps1` 创建并回收后台桌面；`scripts/collect-worker.ps1` 执行采集。采集子进程最长运行 9 分钟，超时只终止该子进程及其后代。任务总时限仍为 10 分钟。
+`logs/*-collector.log` 保存采集日志；任务主日志的 `[silent]` 行记录后台桌面、窗口数和退出码。若需人工验证，仍可手动运行 `npm run collect:interactive` 打开可见窗口。
+
 2026-11-01 云端两次实测仍被访问验证拦截。自动拖动滑块尚未通过验证；不能承诺云端已经恢复。完整浏览器的本机采集已成功，作为备用来源。
