@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-05T04:05:09.135Z",
+  "fetchedAt": "2026-11-05T05:05:07.634Z",
   "ok": 6,
   "failed": 0,
   "noData": 2,
@@ -8,13 +8,13 @@
       "server": "三清山",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-05 11"
+      "latestBucket": "2026-11-05 12"
     },
     {
       "server": "云樱岛",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-05 11"
+      "latestBucket": "2026-11-05 12"
     },
     {
       "server": "桃花坞",
@@ -25,7 +25,7 @@
       "server": "水帘洞",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-05 11"
+      "latestBucket": "2026-11-05 12"
     },
     {
       "server": "白帝城",
@@ -36,19 +36,19 @@
       "server": "花果山",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-05 11"
+      "latestBucket": "2026-11-05 12"
     },
     {
       "server": "女儿国",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-05 11"
+      "latestBucket": "2026-11-05 12"
     },
     {
       "server": "昆仑虚",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-05 11"
+      "latestBucket": "2026-11-05 12"
     }
   ]
 }
