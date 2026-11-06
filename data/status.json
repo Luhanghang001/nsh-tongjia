@@ -1,54 +1,40 @@
 {
-  "fetchedAt": "2026-11-06T03:05:10.905Z",
-  "ok": 6,
+  "fetchedAt": "2026-11-06T04:05:08.020Z",
+  "ok": 0,
   "failed": 0,
-  "noData": 2,
+  "noData": 0,
   "servers": [
     {
       "server": "三清山",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-06 10"
+      "status": "not_collected"
     },
     {
       "server": "云樱岛",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-06 10"
+      "status": "not_collected"
     },
     {
       "server": "桃花坞",
-      "status": "no_data",
-      "error": "接口返回空价格列表；保留历史数据，不标记为采集成功"
+      "status": "not_collected"
     },
     {
       "server": "水帘洞",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-06 10"
+      "status": "not_collected"
     },
     {
       "server": "白帝城",
-      "status": "no_data",
-      "error": "接口返回空价格列表；保留历史数据，不标记为采集成功"
+      "status": "not_collected"
     },
     {
       "server": "花果山",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-06 10"
+      "status": "not_collected"
     },
     {
       "server": "女儿国",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-06 10"
+      "status": "not_collected"
     },
     {
       "server": "昆仑虚",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-06 10"
+      "status": "not_collected"
     }
   ]
 }
