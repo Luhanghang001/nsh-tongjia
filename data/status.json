@@ -1,20 +1,20 @@
 {
-  "fetchedAt": "2026-11-17T09:05:13.367Z",
-  "ok": 5,
-  "failed": 0,
-  "noData": 3,
+  "fetchedAt": "2026-11-17T10:05:16.384Z",
+  "ok": 3,
+  "failed": 1,
+  "noData": 2,
   "servers": [
     {
       "server": "三清山",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-17 16"
+      "latestBucket": "2026-11-17 17"
     },
     {
       "server": "云樱岛",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-17 16"
+      "latestBucket": "2026-11-17 17"
     },
     {
       "server": "桃花坞",
@@ -25,7 +25,7 @@
       "server": "水帘洞",
       "status": "ok",
       "count": 24,
-      "latestBucket": "2026-11-17 16"
+      "latestBucket": "2026-11-17 17"
     },
     {
       "server": "白帝城",
@@ -34,20 +34,16 @@
     },
     {
       "server": "花果山",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-17 16"
+      "status": "failed",
+      "error": "千岛要求人工访问验证。请运行 npm run collect:interactive，在打开的浏览器中手动完成验证。"
     },
     {
       "server": "女儿国",
-      "status": "no_data",
-      "error": "接口返回空价格列表；保留历史数据，不标记为采集成功"
+      "status": "not_collected"
     },
     {
       "server": "昆仑虚",
-      "status": "ok",
-      "count": 24,
-      "latestBucket": "2026-11-17 16"
+      "status": "not_collected"
     }
   ]
 }
