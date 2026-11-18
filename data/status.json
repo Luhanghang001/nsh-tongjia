@@ -1,12 +1,13 @@
 {
-  "fetchedAt": "2026-11-18T05:05:10.020Z",
+  "fetchedAt": "2026-11-18T06:05:09.611Z",
   "ok": 0,
-  "failed": 0,
+  "failed": 1,
   "noData": 0,
   "servers": [
     {
       "server": "三清山",
-      "status": "not_collected"
+      "status": "failed",
+      "error": "千岛要求人工访问验证。请运行 npm run collect:interactive，在打开的浏览器中手动完成验证。"
     },
     {
       "server": "云樱岛",
