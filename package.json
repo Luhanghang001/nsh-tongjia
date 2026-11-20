@@ -5,7 +5,8 @@
   "description": "逆水寒黄金畅玩服各服铜价逐时数据采集",
   "type": "commonjs",
   "scripts": {
-    "collect": "node scripts/collect.js",
+    "collect": "node scripts/collect-7881.js",
+    "collect:qiandao": "node scripts/collect.js",
     "collect:interactive": "node scripts/collect.js --interactive",
     "test": "node --test"
   },

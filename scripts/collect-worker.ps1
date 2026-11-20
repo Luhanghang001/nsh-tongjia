@@ -7,7 +7,7 @@ try {
     $repoRoot = Split-Path -Parent $PSScriptRoot
     Set-Location -LiteralPath $repoRoot
     $env:TONGJIA_PROFILE = Join-Path $repoRoot '.browser-profile'
-    & node (Join-Path $PSScriptRoot 'collect.js') --headed 2>&1 |
+    & node (Join-Path $PSScriptRoot 'collect-7881.js') --headed 2>&1 |
         Out-File -LiteralPath $LogPath -Encoding utf8
     $taskExit = $LASTEXITCODE
 } catch {

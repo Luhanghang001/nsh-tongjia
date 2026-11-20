@@ -32,7 +32,7 @@ try {
     $workerLog = Join-Path $logDir ((Get-Date -Format 'yyyyMMdd-HHmmss') + '-collector.log')
     $taskExit = Invoke-TongjiaIsolatedDesktop -LogPath $workerLog
     if (Test-Path -LiteralPath $workerLog) { Get-Content -LiteralPath $workerLog | Write-Output }
-    & git add -- data/tongjia.csv data/status.json
+    & git add -- data/tongjia.csv data/tongjia-7881.csv data/status.json
     if ($LASTEXITCODE -ne 0) { throw '暂存采集结果失败。' }
     & git diff --cached --quiet
     if ($LASTEXITCODE -eq 1) {
