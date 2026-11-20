@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-20T19:05:06.585Z",
-  "bucketStr": "2026-11-21 03",
+  "fetchedAt": "2026-11-20T20:05:06.281Z",
+  "bucketStr": "2026-11-21 04",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -65,10 +65,10 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 42,
-      "price": 4.7992,
-      "minPrice": 4.7795,
-      "stockWan": 4446.2
+      "listings": 43,
+      "price": 4.7963,
+      "minPrice": 4.7789,
+      "stockWan": 4585.8
     },
     {
       "server": "女儿国",
@@ -79,6 +79,6 @@
       "stockWan": 807
     }
   ],
-  "totalListings": 295,
+  "totalListings": 296,
   "skippedListings": 4
 }
