@@ -1,50 +1,50 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-21T01:05:04.955Z",
-  "bucketStr": "2026-11-21 09",
+  "fetchedAt": "2026-11-21T02:05:04.917Z",
+  "bucketStr": "2026-11-21 10",
   "ok": 9,
   "failed": 0,
   "noData": 0,
   "servers": [
     {
-      "server": "水帘洞",
+      "server": "三清山",
       "status": "ok",
-      "listings": 22,
-      "price": 4.6298,
-      "minPrice": 4.5654,
-      "stockWan": 47934.4
+      "listings": 74,
+      "price": 4.5942,
+      "minPrice": 4.55,
+      "stockWan": 111442.3
     },
     {
       "server": "云樱岛",
       "status": "ok",
-      "listings": 28,
-      "price": 4.6707,
-      "minPrice": 4.5664,
-      "stockWan": 7925
+      "listings": 29,
+      "price": 4.668,
+      "minPrice": 4.5643,
+      "stockWan": 7965
+    },
+    {
+      "server": "水帘洞",
+      "status": "ok",
+      "listings": 23,
+      "price": 4.6298,
+      "minPrice": 4.5654,
+      "stockWan": 47994.4
     },
     {
       "server": "昆仑虚",
       "status": "ok",
-      "listings": 54,
+      "listings": 52,
       "price": 4.59,
       "minPrice": 4.5667,
-      "stockWan": 44082.7
+      "stockWan": 43966.7
     },
     {
       "server": "花果山",
       "status": "ok",
-      "listings": 49,
-      "price": 4.6246,
+      "listings": 50,
+      "price": 4.6277,
       "minPrice": 4.5714,
-      "stockWan": 155718.1
-    },
-    {
-      "server": "三清山",
-      "status": "ok",
-      "listings": 73,
-      "price": 4.598,
-      "minPrice": 4.598,
-      "stockWan": 111362.3
+      "stockWan": 156808.1
     },
     {
       "server": "桃花坞",
@@ -63,22 +63,22 @@
       "stockWan": 19996.16
     },
     {
-      "server": "自在门",
-      "status": "ok",
-      "listings": 43,
-      "price": 4.7993,
-      "minPrice": 4.7795,
-      "stockWan": 4600.2
-    },
-    {
       "server": "女儿国",
       "status": "ok",
       "listings": 10,
       "price": 4.798,
       "minPrice": 4.7905,
       "stockWan": 2217
+    },
+    {
+      "server": "自在门",
+      "status": "ok",
+      "listings": 43,
+      "price": 4.7997,
+      "minPrice": 4.7988,
+      "stockWan": 4863.2
     }
   ],
-  "totalListings": 305,
+  "totalListings": 307,
   "skippedListings": 4
 }
