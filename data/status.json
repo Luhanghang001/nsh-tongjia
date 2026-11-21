@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-21T09:05:05.029Z",
-  "bucketStr": "2026-11-21 17",
+  "fetchedAt": "2026-11-21T10:05:04.603Z",
+  "bucketStr": "2026-11-21 18",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -9,42 +9,34 @@
     {
       "server": "花果山",
       "status": "ok",
-      "listings": 61,
-      "price": 4.6114,
-      "minPrice": 4.51,
-      "stockWan": 198101.1
-    },
-    {
-      "server": "云樱岛",
-      "status": "ok",
-      "listings": 36,
-      "price": 4.6527,
-      "minPrice": 4.5373,
-      "stockWan": 28940
+      "listings": 62,
+      "price": 4.6079,
+      "minPrice": 4.5,
+      "stockWan": 198164.1
     },
     {
       "server": "三清山",
       "status": "ok",
-      "listings": 86,
-      "price": 4.5516,
-      "minPrice": 4.5389,
-      "stockWan": 135330.8
-    },
-    {
-      "server": "白帝城",
-      "status": "ok",
-      "listings": 17,
-      "price": 4.684,
-      "minPrice": 4.54,
-      "stockWan": 41596.16
+      "listings": 88,
+      "price": 4.5374,
+      "minPrice": 4.5249,
+      "stockWan": 135943.8
     },
     {
       "server": "昆仑虚",
       "status": "ok",
       "listings": 59,
-      "price": 4.5758,
-      "minPrice": 4.54,
-      "stockWan": 47077.2
+      "price": 4.5708,
+      "minPrice": 4.525,
+      "stockWan": 47137.2
+    },
+    {
+      "server": "云樱岛",
+      "status": "ok",
+      "listings": 38,
+      "price": 4.6097,
+      "minPrice": 4.5373,
+      "stockWan": 29317
     },
     {
       "server": "水帘洞",
@@ -63,6 +55,14 @@
       "stockWan": 30323
     },
     {
+      "server": "白帝城",
+      "status": "ok",
+      "listings": 16,
+      "price": 4.7,
+      "minPrice": 4.7,
+      "stockWan": 41496.16
+    },
+    {
       "server": "女儿国",
       "status": "ok",
       "listings": 17,
@@ -74,11 +74,11 @@
       "server": "自在门",
       "status": "ok",
       "listings": 34,
-      "price": 5.0176,
-      "minPrice": 4.919,
-      "stockWan": 2803
+      "price": 4.9902,
+      "minPrice": 4.9831,
+      "stockWan": 3042.5
     }
   ],
-  "totalListings": 363,
+  "totalListings": 367,
   "skippedListings": 4
 }
