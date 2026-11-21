@@ -1,42 +1,42 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-21T06:05:04.984Z",
-  "bucketStr": "2026-11-21 14",
+  "fetchedAt": "2026-11-21T07:05:06.065Z",
+  "bucketStr": "2026-11-21 15",
   "ok": 9,
   "failed": 0,
   "noData": 0,
   "servers": [
     {
+      "server": "花果山",
+      "status": "ok",
+      "listings": 63,
+      "price": 4.5849,
+      "minPrice": 4.525,
+      "stockWan": 198287.1
+    },
+    {
       "server": "云樱岛",
       "status": "ok",
       "listings": 37,
-      "price": 4.6534,
+      "price": 4.6462,
       "minPrice": 4.5373,
       "stockWan": 28980
     },
     {
-      "server": "花果山",
+      "server": "三清山",
       "status": "ok",
-      "listings": 62,
-      "price": 4.6018,
-      "minPrice": 4.5435,
-      "stockWan": 198171.1
-    },
-    {
-      "server": "水帘洞",
-      "status": "ok",
-      "listings": 30,
-      "price": 4.6328,
-      "minPrice": 4.5469,
-      "stockWan": 88641.4
+      "listings": 86,
+      "price": 4.5683,
+      "minPrice": 4.5433,
+      "stockWan": 135118.1
     },
     {
       "server": "昆仑虚",
       "status": "ok",
-      "listings": 57,
-      "price": 4.5818,
-      "minPrice": 4.548,
-      "stockWan": 45977.2
+      "listings": 59,
+      "price": 4.5763,
+      "minPrice": 4.545,
+      "stockWan": 47077.2
     },
     {
       "server": "白帝城",
@@ -47,12 +47,12 @@
       "stockWan": 41596.16
     },
     {
-      "server": "三清山",
+      "server": "水帘洞",
       "status": "ok",
-      "listings": 84,
-      "price": 4.5892,
-      "minPrice": 4.5543,
-      "stockWan": 133737.1
+      "listings": 29,
+      "price": 4.6368,
+      "minPrice": 4.6,
+      "stockWan": 88596.4
     },
     {
       "server": "桃花坞",
@@ -73,12 +73,12 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 47,
-      "price": 4.7791,
-      "minPrice": 4.7688,
-      "stockWan": 6045
+      "listings": 49,
+      "price": 4.7675,
+      "minPrice": 4.7562,
+      "stockWan": 6790.2
     }
   ],
-  "totalListings": 375,
+  "totalListings": 381,
   "skippedListings": 4
 }
