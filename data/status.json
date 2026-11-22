@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-22T02:05:06.378Z",
-  "bucketStr": "2026-11-22 10",
+  "fetchedAt": "2026-11-22T03:05:06.760Z",
+  "bucketStr": "2026-11-22 11",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -9,50 +9,50 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 30,
+      "listings": 31,
       "price": 3.7977,
       "minPrice": 3.7977,
-      "stockWan": 132380.4
+      "stockWan": 132676.4
     },
     {
-      "server": "花果山",
+      "server": "云樱岛",
       "status": "ok",
-      "listings": 67,
-      "price": 4.5696,
-      "minPrice": 4.4675,
-      "stockWan": 196716.1
+      "listings": 33,
+      "price": 4.6051,
+      "minPrice": 4.4976,
+      "stockWan": 27068.7
     },
     {
-      "server": "三清山",
+      "server": "水帘洞",
       "status": "ok",
-      "listings": 85,
-      "price": 4.5523,
-      "minPrice": 4.5,
-      "stockWan": 133034.3
+      "listings": 29,
+      "price": 4.5736,
+      "minPrice": 4.5181,
+      "stockWan": 87156.4
     },
     {
       "server": "昆仑虚",
       "status": "ok",
       "listings": 53,
-      "price": 4.5807,
-      "minPrice": 4.53,
-      "stockWan": 44271.7
+      "price": 4.548,
+      "minPrice": 4.52,
+      "stockWan": 44667.7
     },
     {
-      "server": "云樱岛",
+      "server": "三清山",
       "status": "ok",
-      "listings": 31,
-      "price": 4.6253,
+      "listings": 84,
+      "price": 4.5581,
+      "minPrice": 4.5365,
+      "stockWan": 132967.3
+    },
+    {
+      "server": "花果山",
+      "status": "ok",
+      "listings": 66,
+      "price": 4.5769,
       "minPrice": 4.55,
-      "stockWan": 26998
-    },
-    {
-      "server": "水帘洞",
-      "status": "ok",
-      "listings": 28,
-      "price": 4.625,
-      "minPrice": 4.5533,
-      "stockWan": 86726.4
+      "stockWan": 196758.1
     },
     {
       "server": "桃花坞",
@@ -79,6 +79,6 @@
       "stockWan": 40917
     }
   ],
-  "totalListings": 348,
+  "totalListings": 350,
   "skippedListings": 4
 }
