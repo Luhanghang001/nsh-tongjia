@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-22T03:05:06.760Z",
-  "bucketStr": "2026-11-22 11",
+  "fetchedAt": "2026-11-22T04:05:06.637Z",
+  "bucketStr": "2026-11-22 12",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -9,24 +9,40 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 31,
+      "listings": 30,
       "price": 3.7977,
       "minPrice": 3.7977,
-      "stockWan": 132676.4
+      "stockWan": 132561.4
     },
     {
-      "server": "云樱岛",
+      "server": "三清山",
       "status": "ok",
-      "listings": 33,
-      "price": 4.6051,
-      "minPrice": 4.4976,
-      "stockWan": 27068.7
+      "listings": 86,
+      "price": 4.5549,
+      "minPrice": 4.3,
+      "stockWan": 133071.3
+    },
+    {
+      "server": "桃花坞",
+      "status": "ok",
+      "listings": 20,
+      "price": 4.6861,
+      "minPrice": 4.5143,
+      "stockWan": 28398
+    },
+    {
+      "server": "花果山",
+      "status": "ok",
+      "listings": 67,
+      "price": 4.5619,
+      "minPrice": 4.5171,
+      "stockWan": 196959.1
     },
     {
       "server": "水帘洞",
       "status": "ok",
       "listings": 29,
-      "price": 4.5736,
+      "price": 4.5713,
       "minPrice": 4.5181,
       "stockWan": 87156.4
     },
@@ -39,28 +55,12 @@
       "stockWan": 44667.7
     },
     {
-      "server": "三清山",
+      "server": "云樱岛",
       "status": "ok",
-      "listings": 84,
-      "price": 4.5581,
-      "minPrice": 4.5365,
-      "stockWan": 132967.3
-    },
-    {
-      "server": "花果山",
-      "status": "ok",
-      "listings": 66,
-      "price": 4.5769,
+      "listings": 31,
+      "price": 4.6253,
       "minPrice": 4.55,
-      "stockWan": 196758.1
-    },
-    {
-      "server": "桃花坞",
-      "status": "ok",
-      "listings": 19,
-      "price": 4.7,
-      "minPrice": 4.7,
-      "stockWan": 28323
+      "stockWan": 26998
     },
     {
       "server": "白帝城",
@@ -79,6 +79,6 @@
       "stockWan": 40917
     }
   ],
-  "totalListings": 350,
+  "totalListings": 351,
   "skippedListings": 4
 }
