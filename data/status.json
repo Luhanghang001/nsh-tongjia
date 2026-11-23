@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-23T22:05:06.374Z",
-  "bucketStr": "2026-11-24 06",
+  "fetchedAt": "2026-11-23T23:05:05.534Z",
+  "bucketStr": "2026-11-24 07",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -26,7 +26,7 @@
       "server": "三清山",
       "status": "ok",
       "listings": 81,
-      "price": 4.5698,
+      "price": 4.559,
       "minPrice": 4.52,
       "stockWan": 136015.3
     },
@@ -66,9 +66,9 @@
       "server": "自在门",
       "status": "ok",
       "listings": 31,
-      "price": 5.0342,
+      "price": 4.9982,
       "minPrice": 4.9583,
-      "stockWan": 7150.8
+      "stockWan": 7438.8
     },
     {
       "server": "女儿国",
