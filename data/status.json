@@ -1,27 +1,11 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-23T09:05:06.589Z",
-  "bucketStr": "2026-11-23 17",
+  "fetchedAt": "2026-11-23T10:05:06.390Z",
+  "bucketStr": "2026-11-23 18",
   "ok": 9,
   "failed": 0,
   "noData": 0,
   "servers": [
-    {
-      "server": "水帘洞",
-      "status": "ok",
-      "listings": 35,
-      "price": 4.5538,
-      "minPrice": 4.431,
-      "stockWan": 91216.4
-    },
-    {
-      "server": "昆仑虚",
-      "status": "ok",
-      "listings": 63,
-      "price": 4.5072,
-      "minPrice": 4.432,
-      "stockWan": 48951.2
-    },
     {
       "server": "女儿国",
       "status": "ok",
@@ -31,20 +15,28 @@
       "stockWan": 43702.9
     },
     {
-      "server": "三清山",
+      "server": "昆仑虚",
       "status": "ok",
-      "listings": 90,
-      "price": 4.4998,
-      "minPrice": 4.48,
-      "stockWan": 137385.3
+      "listings": 61,
+      "price": 4.5098,
+      "minPrice": 4.47,
+      "stockWan": 48910.2
     },
     {
       "server": "花果山",
       "status": "ok",
       "listings": 74,
-      "price": 4.5299,
-      "minPrice": 4.49,
-      "stockWan": 201988.9
+      "price": 4.5366,
+      "minPrice": 4.47,
+      "stockWan": 201915.9
+    },
+    {
+      "server": "三清山",
+      "status": "ok",
+      "listings": 87,
+      "price": 4.5638,
+      "minPrice": 4.52,
+      "stockWan": 136405.3
     },
     {
       "server": "云樱岛",
@@ -53,6 +45,14 @@
       "price": 4.5787,
       "minPrice": 4.52,
       "stockWan": 30391
+    },
+    {
+      "server": "水帘洞",
+      "status": "ok",
+      "listings": 31,
+      "price": 4.5852,
+      "minPrice": 4.5,
+      "stockWan": 91016.4
     },
     {
       "server": "白帝城",
@@ -73,12 +73,12 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 29,
-      "price": 4.9811,
-      "minPrice": 4.9,
-      "stockWan": 5101.5
+      "listings": 32,
+      "price": 4.9724,
+      "minPrice": 4.949,
+      "stockWan": 5655.5
     }
   ],
-  "totalListings": 391,
+  "totalListings": 385,
   "skippedListings": 4
 }
