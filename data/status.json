@@ -1,50 +1,50 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-24T08:05:05.510Z",
-  "bucketStr": "2026-11-24 16",
+  "fetchedAt": "2026-11-24T09:05:06.162Z",
+  "bucketStr": "2026-11-24 17",
   "ok": 9,
   "failed": 0,
   "noData": 0,
   "servers": [
     {
+      "server": "云樱岛",
+      "status": "ok",
+      "listings": 38,
+      "price": 4.5463,
+      "minPrice": 4.449,
+      "stockWan": 30436
+    },
+    {
       "server": "花果山",
       "status": "ok",
-      "listings": 81,
-      "price": 4.4637,
-      "minPrice": 4.454,
-      "stockWan": 203305.1
+      "listings": 78,
+      "price": 4.4639,
+      "minPrice": 4.46,
+      "stockWan": 203150.1
     },
     {
       "server": "昆仑虚",
       "status": "ok",
-      "listings": 59,
-      "price": 4.5269,
-      "minPrice": 4.47,
-      "stockWan": 48490.2
-    },
-    {
-      "server": "水帘洞",
-      "status": "ok",
-      "listings": 31,
-      "price": 4.5837,
-      "minPrice": 4.4833,
-      "stockWan": 91026.4
-    },
-    {
-      "server": "云樱岛",
-      "status": "ok",
-      "listings": 36,
-      "price": 4.5636,
-      "minPrice": 4.5,
-      "stockWan": 30321
+      "listings": 60,
+      "price": 4.5166,
+      "minPrice": 4.463,
+      "stockWan": 48590.2
     },
     {
       "server": "三清山",
       "status": "ok",
-      "listings": 88,
-      "price": 4.5222,
-      "minPrice": 4.52,
-      "stockWan": 141042.3
+      "listings": 89,
+      "price": 4.5207,
+      "minPrice": 4.5099,
+      "stockWan": 141157.1
+    },
+    {
+      "server": "水帘洞",
+      "status": "ok",
+      "listings": 30,
+      "price": 4.5872,
+      "minPrice": 4.525,
+      "stockWan": 90996.4
     },
     {
       "server": "白帝城",
@@ -73,12 +73,12 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 30,
-      "price": 5.0555,
-      "minPrice": 4.9756,
-      "stockWan": 7036.4
+      "listings": 31,
+      "price": 5.0398,
+      "minPrice": 4.9677,
+      "stockWan": 7255
     }
   ],
-  "totalListings": 389,
+  "totalListings": 390,
   "skippedListings": 4
 }
