@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-24T23:05:06.055Z",
-  "bucketStr": "2026-11-25 07",
+  "fetchedAt": "2026-11-25T00:05:06.109Z",
+  "bucketStr": "2026-11-25 08",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -9,76 +9,76 @@
     {
       "server": "花果山",
       "status": "ok",
-      "listings": 55,
-      "price": 4.5204,
-      "minPrice": 4.4906,
-      "stockWan": 154041.1
+      "listings": 62,
+      "price": 4.5188,
+      "minPrice": 4.49,
+      "stockWan": 160434.1
     },
     {
       "server": "昆仑虚",
       "status": "ok",
-      "listings": 53,
+      "listings": 56,
       "price": 4.5454,
       "minPrice": 4.4923,
-      "stockWan": 45929.5
+      "stockWan": 46629.5
     },
     {
       "server": "三清山",
       "status": "ok",
-      "listings": 76,
+      "listings": 80,
       "price": 4.5202,
       "minPrice": 4.4944,
-      "stockWan": 116355.1
+      "stockWan": 118965.1
     },
     {
       "server": "水帘洞",
       "status": "ok",
-      "listings": 19,
+      "listings": 20,
       "price": 4.5832,
       "minPrice": 4.5,
-      "stockWan": 48146.4
+      "stockWan": 49146.4
     },
     {
       "server": "云樱岛",
       "status": "ok",
-      "listings": 24,
+      "listings": 29,
       "price": 4.5485,
       "minPrice": 4.5198,
-      "stockWan": 7371
+      "stockWan": 10041
     },
     {
       "server": "白帝城",
       "status": "ok",
-      "listings": 9,
+      "listings": 12,
       "price": 4.5993,
       "minPrice": 4.5993,
-      "stockWan": 19996.16
+      "stockWan": 21596.16
     },
     {
       "server": "桃花坞",
       "status": "ok",
-      "listings": 13,
+      "listings": 16,
       "price": 4.5995,
       "minPrice": 4.5995,
-      "stockWan": 8323
+      "stockWan": 9903
+    },
+    {
+      "server": "女儿国",
+      "status": "ok",
+      "listings": 8,
+      "price": 4.6,
+      "minPrice": 4.6,
+      "stockWan": 1907
     },
     {
       "server": "自在门",
       "status": "ok",
       "listings": 24,
-      "price": 5.1289,
+      "price": 5.1425,
       "minPrice": 5.07,
-      "stockWan": 5443.3
-    },
-    {
-      "server": "女儿国",
-      "status": "ok",
-      "listings": 6,
-      "price": 6.5997,
-      "minPrice": 5.7941,
-      "stockWan": 807
+      "stockWan": 5421.6
     }
   ],
-  "totalListings": 283,
+  "totalListings": 311,
   "skippedListings": 4
 }
