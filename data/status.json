@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-26T19:05:07.202Z",
-  "bucketStr": "2026-11-27 03",
+  "fetchedAt": "2026-11-26T20:05:06.943Z",
+  "bucketStr": "2026-11-27 04",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -9,10 +9,18 @@
     {
       "server": "三清山",
       "status": "ok",
-      "listings": 72,
+      "listings": 73,
       "price": 4.51,
       "minPrice": 4.51,
-      "stockWan": 107975.3
+      "stockWan": 108175.3
+    },
+    {
+      "server": "白帝城",
+      "status": "ok",
+      "listings": 10,
+      "price": 4.6217,
+      "minPrice": 4.52,
+      "stockWan": 20096.16
     },
     {
       "server": "昆仑虚",
@@ -55,20 +63,12 @@
       "stockWan": 8323
     },
     {
-      "server": "白帝城",
-      "status": "ok",
-      "listings": 9,
-      "price": 4.633,
-      "minPrice": 4.633,
-      "stockWan": 19996.16
-    },
-    {
       "server": "自在门",
       "status": "ok",
-      "listings": 19,
-      "price": 5.2896,
+      "listings": 18,
+      "price": 5.2994,
       "minPrice": 5.1875,
-      "stockWan": 4522
+      "stockWan": 4470.4
     },
     {
       "server": "女儿国",
@@ -79,6 +79,6 @@
       "stockWan": 807
     }
   ],
-  "totalListings": 256,
+  "totalListings": 257,
   "skippedListings": 4
 }
