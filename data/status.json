@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-27T10:05:21.604Z",
-  "bucketStr": "2026-11-27 18",
+  "fetchedAt": "2026-11-27T11:05:09.859Z",
+  "bucketStr": "2026-11-27 19",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -9,18 +9,26 @@
     {
       "server": "花果山",
       "status": "ok",
-      "listings": 64,
-      "price": 4.5296,
-      "minPrice": 4.4851,
-      "stockWan": 200787.1
+      "listings": 65,
+      "price": 4.5379,
+      "minPrice": 4.4825,
+      "stockWan": 200691.1
     },
     {
-      "server": "水帘洞",
+      "server": "三清山",
       "status": "ok",
-      "listings": 28,
-      "price": 4.588,
+      "listings": 84,
+      "price": 4.5423,
+      "minPrice": 4.4987,
+      "stockWan": 127511
+    },
+    {
+      "server": "昆仑虚",
+      "status": "ok",
+      "listings": 60,
+      "price": 4.5484,
       "minPrice": 4.5,
-      "stockWan": 88992.4
+      "stockWan": 46115.2
     },
     {
       "server": "云樱岛",
@@ -31,20 +39,12 @@
       "stockWan": 31017
     },
     {
-      "server": "三清山",
+      "server": "水帘洞",
       "status": "ok",
-      "listings": 84,
-      "price": 4.51,
-      "minPrice": 4.51,
-      "stockWan": 129361
-    },
-    {
-      "server": "昆仑虚",
-      "status": "ok",
-      "listings": 59,
-      "price": 4.5494,
-      "minPrice": 4.5459,
-      "stockWan": 46095.2
+      "listings": 27,
+      "price": 4.6,
+      "minPrice": 4.6,
+      "stockWan": 88872.4
     },
     {
       "server": "女儿国",
@@ -57,10 +57,10 @@
     {
       "server": "桃花坞",
       "status": "ok",
-      "listings": 22,
+      "listings": 23,
       "price": 4.633,
       "minPrice": 4.633,
-      "stockWan": 31673
+      "stockWan": 31903
     },
     {
       "server": "白帝城",
@@ -73,12 +73,12 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 29,
-      "price": 5.1835,
-      "minPrice": 5.1739,
-      "stockWan": 9030.6
+      "listings": 31,
+      "price": 5.1739,
+      "minPrice": 5.1685,
+      "stockWan": 9212.6
     }
   ],
-  "totalListings": 360,
+  "totalListings": 364,
   "skippedListings": 4
 }
