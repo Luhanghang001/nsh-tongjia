@@ -1,34 +1,26 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-27T07:05:11.485Z",
-  "bucketStr": "2026-11-27 15",
+  "fetchedAt": "2026-11-27T08:05:10.491Z",
+  "bucketStr": "2026-11-27 16",
   "ok": 9,
   "failed": 0,
   "noData": 0,
   "servers": [
     {
-      "server": "女儿国",
+      "server": "花果山",
       "status": "ok",
-      "listings": 19,
-      "price": 4.5979,
-      "minPrice": 4.497,
-      "stockWan": 43717
-    },
-    {
-      "server": "桃花坞",
-      "status": "ok",
-      "listings": 24,
-      "price": 4.6308,
-      "minPrice": 4.509,
-      "stockWan": 31920.8
+      "listings": 62,
+      "price": 4.5532,
+      "minPrice": 4.5091,
+      "stockWan": 200627.1
     },
     {
       "server": "三清山",
       "status": "ok",
-      "listings": 82,
+      "listings": 84,
       "price": 4.51,
       "minPrice": 4.51,
-      "stockWan": 128695.3
+      "stockWan": 128445.3
     },
     {
       "server": "云樱岛",
@@ -37,14 +29,6 @@
       "price": 4.5497,
       "minPrice": 4.548,
       "stockWan": 30767
-    },
-    {
-      "server": "花果山",
-      "status": "ok",
-      "listings": 64,
-      "price": 4.5599,
-      "minPrice": 4.5498,
-      "stockWan": 200327.1
     },
     {
       "server": "昆仑虚",
@@ -63,6 +47,22 @@
       "stockWan": 88872.4
     },
     {
+      "server": "女儿国",
+      "status": "ok",
+      "listings": 18,
+      "price": 4.6,
+      "minPrice": 4.6,
+      "stockWan": 43697
+    },
+    {
+      "server": "桃花坞",
+      "status": "ok",
+      "listings": 23,
+      "price": 4.633,
+      "minPrice": 4.633,
+      "stockWan": 31903
+    },
+    {
       "server": "白帝城",
       "status": "ok",
       "listings": 19,
@@ -73,12 +73,12 @@
     {
       "server": "自在门",
       "status": "ok",
-      "listings": 24,
-      "price": 5.2469,
-      "minPrice": 5.16,
-      "stockWan": 5533.6
+      "listings": 27,
+      "price": 5.2454,
+      "minPrice": 5.1487,
+      "stockWan": 6112.6
     }
   ],
-  "totalListings": 352,
+  "totalListings": 353,
   "skippedListings": 4
 }
