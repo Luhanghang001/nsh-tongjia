@@ -1,7 +1,7 @@
 {
   "source": "7881",
-  "fetchedAt": "2026-11-27T19:05:09.408Z",
-  "bucketStr": "2026-11-28 03",
+  "fetchedAt": "2026-11-27T20:05:08.725Z",
+  "bucketStr": "2026-11-28 04",
   "ok": 9,
   "failed": 0,
   "noData": 0,
@@ -13,6 +13,14 @@
       "price": 4.5067,
       "minPrice": 4.5,
       "stockWan": 43171.2
+    },
+    {
+      "server": "花果山",
+      "status": "ok",
+      "listings": 47,
+      "price": 4.5591,
+      "minPrice": 4.525,
+      "stockWan": 151544.1
     },
     {
       "server": "三清山",
@@ -37,14 +45,6 @@
       "price": 4.627,
       "minPrice": 4.5333,
       "stockWan": 46142.4
-    },
-    {
-      "server": "花果山",
-      "status": "ok",
-      "listings": 47,
-      "price": 4.578,
-      "minPrice": 4.5455,
-      "stockWan": 151544.1
     },
     {
       "server": "云樱岛",
